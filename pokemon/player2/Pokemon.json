@@ -1,0 +1,32 @@
+[
+{"Name":"Bulbasaur",
+"Type":"[Grass Poison]",
+"HP":"22",
+"MaxHP":"22",
+"Dmg":"4"
+},
+{"Name":"Pikachu",
+"Type":"[Electric]",
+"HP":"25",
+"MaxHP":"25",
+"Dmg":"5"
+},
+{"HP":"22",
+"MaxHP":"22",
+"Dmg":"4",
+"Name":"Bulbasaur",
+"Type":"[Grass Poison]"
+},
+{"Name":"Squirtle",
+"Type":"[Water]",
+"HP":"23",
+"MaxHP":"23",
+"Dmg":"5"
+},
+{"Name":"Ratata",
+"Type":"[Normal]",
+"HP":"20",
+"MaxHP":"20",
+"Dmg":"4"
+},
+]
