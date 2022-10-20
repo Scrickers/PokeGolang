@@ -1,7 +1,10 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
+	"math"
 	"math/rand"
 	"os"
 	"strconv"
@@ -15,8 +18,9 @@ var GI = 0
 var DevMode = true
 
 func main() {
-	getData("player1/" + fileName1)
-	GameName()
+	readJSONFile("player1/Pokemon.json")
+	//getData("player1/" + fileName1)
+	//GameName()
 	//fmt.Println(getMapWithRandomKey(PokemonData()))
 	//action()
 }
@@ -192,6 +196,7 @@ func convertMapToString(m map[string]interface{}) string {
 	}
 	GI++
 	if GI == nb {
+		GI = 0
 		s += "}"
 	} else {
 		s += "},\n"
@@ -200,9 +205,321 @@ func convertMapToString(m map[string]interface{}) string {
 }
 func log(s string) {
 	if DevMode {
-
 		now := time.Now()
 		hour, min, sec := now.Clock()
 		fmt.Println("\033[31m[DevLog] \033[36m(", hour, ":", min, ":", sec, ") : \033[34m", s, "\033[0m")
+	}
+}
+func readJSONFile(fileName string) {
+	var data []map[string]interface{}
+	file, err := os.Open(fileName)
+	if err != nil {
+		log(err.Error())
+	}
+	defer file.Close()
+	byteValue, _ := ioutil.ReadAll(file)
+	json.Unmarshal(byteValue, &data)
+	fmt.Println(data[0])
+}
+func TypePokemon(attack, defend string, dmg float32) float32 {
+	switch attack {
+	case "Normal":
+		switch defend {
+		case "Rock":
+			return math.Round(dmg * 0.5)
+		case "Steel":
+			return math.Round(dmg * 0.5)
+		case "Ghost":
+			return 0
+		}
+	case "Fire":
+		switch defend {
+		case "Fire":
+			return math.Round(dmg * 0.5)
+		case "Water":
+			return math.Round(dmg * 0.5)
+		case "Grass":
+			return dmg * 2
+		case "Ice":
+			return dmg * 2
+		case "Bug":
+			return dmg * 2
+		case "Rock":
+			return math.Round(dmg * 0.5)
+		case "Dragon":
+			return math.Round(dmg * 0.5)
+		case "Steel":
+			return dmg * 2
+		}
+	case "Water":
+		switch defend {
+		case "Fire":
+			return dmg * 2
+		case "Water":
+			return math.Round(dmg * 0.5)
+		case "Grass":
+			return math.Round(dmg * 0.5)
+		case "Ground":
+			return dmg * 2
+		case "Rock":
+			return dmg * 2
+		case "Dragon":
+			return math.Round(dmg * 0.5)
+		}
+	case "Electric":
+		switch defend {
+		case "Water":
+			return dmg * 2
+		case "Electric":
+			return math.Round(dmg * 0.5)
+		case "Grass":
+			return math.Round(dmg * 0.5)
+		case "Ground":
+			return 0
+		case "Flying":
+			return dmg * 2
+		case "Dragon":
+			return math.Round(dmg * 0.5)
+		}
+	case "Grass":
+		switch defend {
+		case "Fire":
+			return math.Round(dmg * 0.5)
+		case "Water":
+			return dmg * 2
+		case "Electric":
+			return dmg * 2
+		case "Grass":
+			return math.Round(dmg * 0.5)
+		case "Ice":
+			return dmg * 2
+		case "Poison":
+			return math.Round(dmg * 0.5)
+		case "Ground":
+			return dmg * 2
+		case "Flying":
+			return math.Round(dmg * 0.5)
+		case "Bug":
+			return math.Round(dmg * 0.5)
+		case "Rock":
+			return dmg * 2
+		case "Dragon":
+			return math.Round(dmg * 0.5)
+		case "Steel":
+			return math.Round(dmg * 0.5)
+		}
+	case "Ice":
+		switch defend {
+		case "Fire":
+			return math.Round(dmg * 0.5)
+		case "Water":
+			return math.Round(dmg * 0.5)
+		case "Grass":
+			return dmg * 2
+		case "Ice":
+			return math.Round(dmg * 0.5)
+		case "Ground":
+			return dmg * 2
+		case "Flying":
+			return dmg * 2
+		case "Dragon":
+			return dmg * 2
+		case "Steel":
+			return math.Round(dmg * 0.5)
+		}
+	case "Fighting":
+		switch defend {
+		case "Normal":
+			return dmg * 2
+		case "Ice":
+			return dmg * 2
+		case "Poison":
+			return math.Round(dmg * 0.5)
+		case "Flying":
+			return math.Round(dmg * 0.5)
+		case "Psychic":
+			return math.Round(dmg * 0.5)
+		case "Bug":
+			return math.Round(dmg * 0.5)
+		case "Rock":
+			return dmg * 2
+		case "Ghost":
+			return 0
+		case "Dark":
+			return dmg * 2
+		case "Steel":
+			return dmg * 2
+		case "Fairy":
+			return math.Round(dmg * 0.5)
+		}
+	case "Poison":
+		switch defend {
+		case "Grass":
+			return dmg * 2
+		case "Poison":
+			return math.Round(dmg * 0.5)
+		case "Ground":
+			return math.Round(dmg * 0.5)
+		case "Rock":
+			return math.Round(dmg * 0.5)
+		case "Ghost":
+			return math.Round(dmg * 0.5)
+		case "Steel":
+			return 0
+		case "Fairy":
+			return dmg * 2
+		}
+	case "Ground":
+		switch defend {
+		case "Fire":
+			return dmg * 2
+		case "Electric":
+			return dmg * 2
+		case "Grass":
+			return math.Round(dmg * 0.5)
+		case "Poison":
+			return dmg * 2
+		case "Flying":
+			return 0
+		case "Bug":
+			return math.Round(dmg * 0.5)
+		case "Rock":
+			return math.Round(dmg * 0.5)
+		case "Steel":
+			return math.Round(dmg * 0.5)
+		}
+	case "Flying":
+		switch defend {
+		case "Electric":
+			return math.Round(dmg * 0.5)
+		case "Grass":
+			return dmg * 2
+		case "Fighting":
+			return dmg * 2
+		case "Bug":
+			return dmg * 2
+		case "Rock":
+			return math.Round(dmg * 0.5)
+		case "Steel":
+			return math.Round(dmg * 0.5)
+		}
+	case "Psychic":
+		switch defend {
+		case "Fighting":
+			return dmg * 2
+		case "Poison":
+			return dmg * 2
+		case "Psychic":
+			return math.Round(dmg * 0.5)
+		case "Dark":
+			return 0
+		case "Steel":
+			return math.Round(dmg * 0.5)
+		}
+	case "Bug":
+		switch defend {
+		case "Fire":
+			return math.Round(dmg * 0.5)
+		case "Grass":
+			return dmg * 2
+		case "Fighting":
+			return math.Round(dmg * 0.5)
+		case "Poison":
+			return math.Round(dmg * 0.5)
+		case "Flying":
+			return math.Round(dmg * 0.5)
+		case "Psychic":
+			return dmg * 2
+		case "Ghost":
+			return math.Round(dmg * 0.5)
+		case "Dark":
+			return dmg * 2
+		case "Steel":
+			return math.Round(dmg * 0.5)
+		case "Fairy":
+			return math.Round(dmg * 0.5)
+		}
+	case "Rock":
+		switch defend {
+		case "Fire":
+			return dmg * 2
+		case "Ice":
+			return dmg * 2
+		case "Fighting":
+			return math.Round(dmg * 0.5)
+		case "Ground":
+			return math.Round(dmg * 0.5)
+		case "Flying":
+			return dmg * 2
+		case "Bug":
+			return dmg * 2
+		case "Steel":
+			return math.Round(dmg * 0.5)
+		}
+	case "Ghost":
+		switch defend {
+		case "Normal":
+			return 0
+		case "Psychic":
+			return dmg * 2
+		case "Ghost":
+			return dmg * 2
+		case "Dark":
+			return math.Round(dmg * 0.5)
+		}
+	case "Dragon":
+		switch defend {
+		case "Dragon":
+			return dmg * 2
+		case "Steel":
+			return math.Round(dmg * 0.5)
+		case "Fairy":
+			return 0
+		}
+	case "Dark":
+		switch defend {
+		case "Fighting":
+			return math.Round(dmg * 0.5)
+		case "Psychic":
+			return dmg * 2
+		case "Ghost":
+			return dmg * 2
+		case "Dark":
+			return math.Round(dmg * 0.5)
+		case "Fairy":
+			return math.Round(dmg * 0.5)
+		}
+	case "Steel":
+		switch defend {
+		case "Fire":
+			return math.Round(dmg * 0.5)
+		case "Water":
+			return math.Round(dmg * 0.5)
+		case "Electric":
+			return math.Round(dmg * 0.5)
+		case "Ice":
+			return dmg * 2
+		case "Rock":
+			return dmg * 2
+		case "Steel":
+			return math.Round(dmg * 0.5)
+		case "Fairy":
+			return dmg * 2
+		}
+	case "Fairy":
+		switch defend {
+		case "Fire":
+			return math.Round(dmg * 0.5)
+		case "Fighting":
+			return dmg * 2
+		case "Poison":
+			return math.Round(dmg * 0.5)
+		case "Dragon":
+			return dmg * 2
+		case "Dark":
+			return dmg * 2
+		case "Steel":
+			return int(math.Round(dmg * 0.5))
+		}
 	}
 }
