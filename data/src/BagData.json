@@ -1,0 +1,37 @@
+[
+  {
+    "Name": "Potion",
+    "Description": "Heal 6 HP",
+    "Heal": 6,
+    "DropRate": 60,
+    "Id" : 1
+  },
+  {
+    "Name": "Super Potion",
+    "Description": "Heal 10 HP",
+    "Heal": 10,
+    "DropRate": 20,
+    "Id" : 2
+  },
+  {
+    "Name": "Hyper Potion",
+    "Description": "Heal 20 HP",
+    "Heal": 20,
+    "DropRate": 10,
+    "Id" : 3
+  },
+  {
+    "Name": "Max Potion",
+    "Description": "Restore all HP and remove any status",
+    "Heal": 50,
+    "DropRate": 5,
+    "Id" : 4
+  },
+  {
+    "Name": "Revive",
+    "Description": "Revive a Pokemon with half his life",
+    "Heal": 0,
+    "DropRate": 5,
+    "Id" : 5
+  }
+]

@@ -1,0 +1,160 @@
+[
+  {
+    "Name": "Bulbasaur",
+    "Type": [
+      "Grass",
+      "Poison"
+    ],
+    "HP": 22,
+    "MaxHP": 22,
+    "Dmg": 4
+  },
+  {
+    "Name": "Charmander",
+    "Type": [
+      "Fire"
+    ],
+    "HP": 24,
+    "MaxHP": 24,
+    "Dmg": 6
+  },
+  {
+    "Name": "Squirtle",
+    "Type": [
+      "Water"
+    ],
+    "HP": 23,
+    "MaxHP": 23,
+    "Dmg": 5
+  },
+  {
+    "Name": "Pikachu",
+    "Type": [
+      "Electric"
+    ],
+    "HP": 25,
+    "MaxHP": 25,
+    "Dmg": 5
+  },
+  {
+    "Name": "Weedle",
+    "Type": [
+      "Bug",
+      "Poison"
+    ],
+    "HP": 16,
+    "MaxHP": 16,
+    "Dmg": 2
+  },
+  {
+    "Name": "Ratata",
+    "Type": [
+      "Normal"
+    ],
+    "HP": 20,
+    "MaxHP": 20,
+    "Dmg": 4
+  },
+  {
+    "Name": "Sandshrew",
+    "Type": [
+      "Ground"
+    ],
+    "HP": 19,
+    "MaxHP": 19,
+    "Dmg": 5
+  },
+  {
+    "Name": "Nidoran",
+    "Type": [
+      "Poison"
+    ],
+    "HP": 20,
+    "MaxHP": 20,
+    "Dmg": 4
+  },
+  {
+    "Name": "Vulpix",
+    "Type": [
+      "Fire"
+    ],
+    "HP": 23,
+    "MaxHP": 23,
+    "Dmg": 6
+  },
+  {
+    "Name": "Psyduck",
+    "Type": [
+      "Water"
+    ],
+    "HP": 17,
+    "MaxHP": 23,
+    "Dmg": 6
+  },
+  {
+    "Name": "Mankey",
+    "Type": [
+      "Fighting"
+    ],
+    "HP": 19,
+    "MaxHP": 19,
+    "Dmg": 7
+  },
+  {
+    "Name": "Abra",
+    "Type": [
+      "Psychic"
+    ],
+    "HP": 20,
+    "MaxHP": 20,
+    "Dmg": 6
+  },
+  {
+    "Name": "Geodude",
+    "Type": [
+      "Rock",
+      "Ground"
+    ],
+    "HP": 23,
+    "MaxHP": 23,
+    "Dmg": 4
+  },
+  {
+    "Name": "Magnemite",
+    "Type": [
+      "Electric",
+      "Steel"
+    ],
+    "HP": 24,
+    "MaxHP": 24,
+    "Dmg": 5
+  },
+  {
+    "Name": "Mr. Mime",
+    "Type": [
+      "Psychic",
+      "Fairy"
+    ],
+    "HP": 24,
+    "MaxHP": 24,
+    "Dmg": 5
+  },
+  {
+    "Name": "Eevee",
+    "Type": [
+      "Normal"
+    ],
+    "HP": 20,
+    "MaxHP": 20,
+    "Dmg": 4
+  },
+  {
+    "Name": "Vaporeon",
+    "Type": [
+      "Water"
+    ],
+    "HP": 21,
+    "MaxHP": 21,
+    "Dmg": 4
+  }
+]
