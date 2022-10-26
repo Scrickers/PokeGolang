@@ -6,6 +6,22 @@ import (
 	"pokemon/data"
 )
 
+func PrintLogo() {
+
+	fmt.Println("\033[34m")
+	fmt.Println(".........................................................................................")
+	fmt.Println("\033[33m")
+	fmt.Println("██████╗  ██████╗ ██╗  ██╗███████╗███╗   ███╗ ██████╗ ███╗   ██╗     █████╗ ████████╗████████╗ █████╗  ██████╗██╗  ██╗")
+	fmt.Println("██╔══██╗██╔═══██╗██║ ██╔╝██╔════╝████╗ ████║██╔═══██╗████╗  ██║    ██╔══██╗╚══██╔══╝╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝")
+	fmt.Println("██████╔╝██║   ██║█████╔╝ █████╗  ██╔████╔██║██║   ██║██╔██╗ ██║    ███████║   ██║      ██║   ███████║██║     █████╔╝ ")
+	fmt.Println("██╔═══╝ ██║   ██║██╔═██╗ ██╔══╝  ██║╚██╔╝██║██║   ██║██║╚██╗██║    ██╔══██║   ██║      ██║   ██╔══██║██║     ██╔═██╗ ")
+	fmt.Println("██║     ╚██████╔╝██║  ██╗███████╗██║ ╚═╝ ██║╚██████╔╝██║ ╚████║    ██║  ██║   ██║      ██║   ██║  ██║╚██████╗██║  ██╗")
+	fmt.Println("╚═╝      ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝    ╚═╝  ╚═╝   ╚═╝      ╚═╝   ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝")
+	fmt.Println("\033[34m")
+	fmt.Println(".........................................................................................")
+	fmt.Println("\033[0m")
+	fmt.Print("\n")
+}
 func PokemonAttack() {
 	PokeData1, _ := data.ReadJSONFilePoke("../data/player1/Pokemon.json")
 	PokeData2, _ := data.ReadJSONFilePoke("../data/player2/Pokemon.json")
@@ -20,6 +36,7 @@ func PokemonAttack() {
 		PokeDefend = PokeData1[j]
 	}
 	dmg := PokeAttack.Dmg
+	baseDmg := dmg
 	for i := 0; i < len(PokeAttack.Type); i++ {
 		for o := 0; o < len(PokeDefend.Type); o++ {
 			dmg = int(math.Ceil(dmgTypePokemon(PokeAttack.Type[i], PokeDefend.Type[o], float64(dmg))))
@@ -49,6 +66,20 @@ func PokemonAttack() {
 		}
 		data.WriteJSONFile("../data/player1/Pokemon.json", PokeData1)
 	}
+	PrintLogo()
+	fmt.Println("Le Joueur " + data.GetTurn() + " attaque avec " + PokeAttack.Name + " et inflige " + fmt.Sprint(dmg) + " dégats à " + PokeDefend.Name)
+	if dmg > baseDmg {
+		fmt.Println("C'est super efficace !")
+	} else if dmg < baseDmg {
+		fmt.Println("C'est pas très efficace ...")
+	}
+	fmt.Print("\n")
+	fmt.Print("\n")
+	fmt.Println("Il reste " + fmt.Sprint(PokeDefend.HP) + " HP à " + PokeDefend.Name)
+	fmt.Println("Appuyez sur Entrée pour continuer")
+	fmt.Print("\n")
+	fmt.Print("\n")
+	fmt.Scanln()
 }
 func remove(slice []data.Pokemon, s int) []data.Pokemon {
 	PokeData, _ := data.ReadJSONFilePoke("../data/player" + data.GetTurn() + "/PokeDeath.json")

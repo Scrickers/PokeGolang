@@ -14,21 +14,59 @@ func main() {
 	inventory.SetBag()
 	// set Inventory
 	//ListBag()
-	printLogo()
+	data.ClearChat()
 	StartGame()
 }
+
 func printLogo() {
+	fmt.Println("\033[34m")
 	fmt.Println(".........................................................................................")
+	fmt.Println("\033[33m")
 	fmt.Println("██████╗  ██████╗ ██╗  ██╗███████╗███╗   ███╗ ██████╗ ███╗   ██╗     ██████╗██╗     ██╗")
 	fmt.Println("██╔══██╗██╔═══██╗██║ ██╔╝██╔════╝████╗ ████║██╔═══██╗████╗  ██║    ██╔════╝██║     ██║")
 	fmt.Println("██████╔╝██║   ██║█████╔╝ █████╗  ██╔████╔██║██║   ██║██╔██╗ ██║    ██║     ██║     ██║")
 	fmt.Println("██╔═══╝ ██║   ██║██╔═██╗ ██╔══╝  ██║╚██╔╝██║██║   ██║██║╚██╗██║    ██║     ██║     ██║")
 	fmt.Println("██║     ╚██████╔╝██║  ██╗███████╗██║ ╚═╝ ██║╚██████╔╝██║ ╚████║    ╚██████╗███████╗██║")
 	fmt.Println("╚═╝      ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝     ╚═════╝╚══════╝╚═╝")
+	fmt.Println("\033[34m")
 	fmt.Println(".........................................................................................")
+	fmt.Println("\033[0m")
+	fmt.Print("\n")
 }
-func StartGame() {
+func PrintList() {
+	fmt.Println("\033[34m")
+	fmt.Println(".........................................................................................")
+	fmt.Println("\033[33m")
+	fmt.Println("██╗     ██╗███████╗████████╗    ██████╗  ██████╗ ██╗  ██╗███████╗███╗   ███╗ ██████╗ ███╗   ██╗")
+	fmt.Println("██║     ██║██╔════╝╚══██╔══╝    ██╔══██╗██╔═══██╗██║ ██╔╝██╔════╝████╗ ████║██╔═══██╗████╗  ██║")
+	fmt.Println("██║     ██║███████╗   ██║       ██████╔╝██║   ██║█████╔╝ █████╗  ██╔████╔██║██║   ██║██╔██╗ ██║")
+	fmt.Println("██║     ██║╚════██║   ██║       ██╔═══╝ ██║   ██║██╔═██╗ ██╔══╝  ██║╚██╔╝██║██║   ██║██║╚██╗██║")
+	fmt.Println("███████╗██║███████║   ██║       ██║     ╚██████╔╝██║  ██╗███████╗██║ ╚═╝ ██║╚██████╔╝██║ ╚████║")
+	fmt.Println("╚══════╝╚═╝╚══════╝   ╚═╝       ╚═╝      ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝")
+	fmt.Println("\033[34m")
+	fmt.Println(".........................................................................................")
+	fmt.Println("\033[0m")
+	fmt.Print("\n")
+}
+func PrintBag() {
+	fmt.Println("\033[34m")
+	fmt.Println(".........................................................................................")
+	fmt.Println("\033[33m")
+	fmt.Println("██████╗  ██████╗ ██╗  ██╗███████╗███╗   ███╗ ██████╗ ███╗   ██╗    ██████╗  █████╗  ██████╗ ")
+	fmt.Println("██╔══██╗██╔═══██╗██║ ██╔╝██╔════╝████╗ ████║██╔═══██╗████╗  ██║    ██╔══██╗██╔══██╗██╔════╝ ")
+	fmt.Println("██████╔╝██║   ██║█████╔╝ █████╗  ██╔████╔██║██║   ██║██╔██╗ ██║    ██████╔╝███████║██║  ███╗")
+	fmt.Println("██╔═══╝ ██║   ██║██╔═██╗ ██╔══╝  ██║╚██╔╝██║██║   ██║██║╚██╗██║    ██╔══██╗██╔══██║██║   ██║")
+	fmt.Println("██║     ╚██████╔╝██║  ██╗███████╗██║ ╚═╝ ██║╚██████╔╝██║ ╚████║    ██████╔╝██║  ██║╚██████╔╝")
+	fmt.Println("╚═╝      ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═══╝    ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ")
+	fmt.Println("\033[34m")
+	fmt.Println(".........................................................................................")
+	fmt.Println("\033[0m")
+	fmt.Print("\n")
 
+}
+
+func StartGame() {
+	printLogo()
 	fmt.Println("Please select an option:")
 	fmt.Println("1. List all Pokemon")
 	fmt.Println("2. fight")
@@ -38,24 +76,28 @@ func StartGame() {
 
 	var option int
 	fmt.Scanln(&option)
+	data.ClearChat()
 	switch option {
 	case 1:
 		ListPokemon()
+		data.Wait()
+		data.ClearChat()
 	case 2:
 		hit.PokemonAttack()
 		data.NextTurn()
+		data.Wait()
+		data.ClearChat()
 	case 3:
-		fmt.Println("Bag")
 		ListBag()
-		return
+		data.Wait()
+		data.ClearChat()
 	case 4:
-		fmt.Println("Changement des pokemon")
-		ListPokemon()
+		ChangePokemon()
 		var option int
 		fmt.Scanln(&option)
 		inventory.ChangePokemon(option)
-		StartGame()
-		return
+		data.Wait()
+		data.ClearChat()
 	case 5:
 		fmt.Println("Exiting...")
 		return
@@ -63,10 +105,51 @@ func StartGame() {
 		fmt.Println("Invalid option. Please try again.")
 	}
 	StartGame()
+
 }
 
 func ListPokemon() {
-	fmt.Println("Listing all Pokemon...")
+	PrintList()
+	fmt.Print("\n")
+	fmt.Println("Your Pokemon:")
+	fileName := "../data/player" + data.GetTurn() + "/Pokemon.json"
+	UserData, _ := data.ReadJSONFilePoke(fileName)
+	for i := 0; i < len(UserData); i++ {
+		n := ""
+		if UserData[i].Active {
+			n = "*"
+		}
+		Pb := maths.ProgressBar(float64(UserData[i].HP * 10 / UserData[i].MaxHP))
+		str := fmt.Sprintf("%d%s. %s (%s) [%d/%d]", i+1, n, UserData[i].Name, Pb, UserData[i].HP, UserData[i].MaxHP)
+		fmt.Println(str)
+	}
+
+	fmt.Println("\033[34m")
+	fmt.Println(".........................................................................................")
+	fmt.Println("\033[0m")
+	fmt.Println("Enemy Pokemon:")
+	if data.GetTurn() == "1" {
+		fileName = "../data/player2/Pokemon.json"
+	} else {
+		fileName = "../data/player1/Pokemon.json"
+	}
+	UserData, _ = data.ReadJSONFilePoke(fileName)
+	for i := 0; i < len(UserData); i++ {
+		n := ""
+		if UserData[i].Active {
+			n = "*"
+		}
+		Pb := maths.ProgressBar(float64(UserData[i].HP * 10 / UserData[i].MaxHP))
+		str := fmt.Sprintf("%d%s. %s (%s) [%d/%d]", i+1, n, UserData[i].Name, Pb, UserData[i].HP, UserData[i].MaxHP)
+		fmt.Println(str)
+	}
+
+}
+
+func ChangePokemon() {
+	PrintList()
+	fmt.Print("\n")
+	fmt.Println("Choisissez un pokemon qui sera deffinit comme actif :")
 	fileName := "../data/player" + data.GetTurn() + "/Pokemon.json"
 	UserData, _ := data.ReadJSONFilePoke(fileName)
 	for i := 0; i < len(UserData); i++ {
@@ -80,7 +163,7 @@ func ListPokemon() {
 	}
 }
 func ListBag() {
-	fmt.Println("Listing all Pokemon...")
+	PrintBag()
 
 	id := []int{
 		1: 0,
@@ -93,7 +176,6 @@ func ListBag() {
 	for i := 0; i < len(UserData); i++ {
 		id[UserData[i].Id]++
 	}
-	fmt.Println(id)
 	if id[1] > 0 {
 		fmt.Println("1. Potion (x", id[1], ")")
 	}
@@ -109,6 +191,7 @@ func ListBag() {
 	if id[5] > 0 {
 		fmt.Println("5. Revive (x", id[5], ")")
 	}
+	fmt.Println("6. Exit")
 	var option int
 	fmt.Scanln(&option)
 	switch option {
@@ -124,7 +207,6 @@ func ListBag() {
 			fmt.Println("You do not have any Super potions.")
 			return
 		}
-
 		fmt.Println("Using Super Potion...")
 		ItemRemove(2)
 	case 3:
@@ -148,10 +230,12 @@ func ListBag() {
 		}
 		fmt.Println("Using Revive...")
 		ItemRemove(5)
+	case 6:
+		fmt.Println("Exiting...")
+		return
 	default:
 		fmt.Println("Invallid option. Please try again.")
 	}
-	StartGame()
 }
 func ItemRemove(s int) {
 	UserData, _ := data.ReadJSONFileBag("../data/player" + data.GetTurn() + "/Bag.json")

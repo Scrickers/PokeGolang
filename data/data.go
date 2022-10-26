@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"os/exec"
 	"strconv"
 )
 
@@ -88,10 +89,19 @@ func GetTurn() string {
 func NextTurn() {
 	switch turn {
 	case 1:
-		fmt.Println("It's turn of player 1!")
+		fmt.Println("It's turn of player 2 !")
 		turn = 2
 	case 2:
-		fmt.Println("It's turn of player 2!")
+		fmt.Println("It's turn of player 1 !")
 		turn = 1
 	}
+}
+func ClearChat() {
+	cmd := exec.Command("cmd", "/c", "cls")
+	cmd.Stdout = os.Stdout
+	cmd.Run()
+}
+func Wait() {
+	var input string
+	fmt.Scanln(&input)
 }

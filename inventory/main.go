@@ -29,8 +29,11 @@ func SetPokemon() {
 		}
 		fileName := "../data/player" + string(rune('0'+i+1)) + "/Pokemon.json"
 		data.WriteJSONFile(fileName, pokePLayer)
+		fileName = "../data/player" + string(rune('0'+i+1)) + "/PokeDeath.json"
+		data.WriteJSONFile(fileName, []data.Pokemon{})
 	}
 }
+
 func SetBag() {
 	BagData, _ := data.ReadJSONFileBag("../data/src/BagData.json")
 	bagPlayer := make([]data.Bag, 7)
@@ -63,8 +66,6 @@ func checkExist(b []data.Pokemon, strCheck string) bool {
 }
 func ChangePokemon(s int) {
 	fileName := "../data/player" + data.GetTurn() + "/Pokemon.json"
-
-	fmt.Println("Changing Pokemon...")
 	s -= 1
 	pokePLayer, _ := data.ReadJSONFilePoke(fileName)
 	if s >= 0 && s <= len(pokePLayer)-1 {
@@ -75,7 +76,9 @@ func ChangePokemon(s int) {
 				pokePLayer[i].Active = false
 			}
 		}
-		fmt.Println("Change Pokemon")
+		fmt.Print("\n")
+		fmt.Println("Vous avez changé de Pokemon")
+		fmt.Println("Vous avez choisi " + pokePLayer[s].Name)
 		data.WriteJSONFile(fileName, pokePLayer)
 		return
 	}
@@ -111,9 +114,11 @@ func HealthPotion(i int) {
 			if pokePLayer[o].HP > pokePLayer[o].MaxHP {
 				pokePLayer[o].HP = pokePLayer[o].MaxHP
 			}
+			fmt.Println("You used a Health Potion on " + pokePLayer[o].Name + ", it now has " + string(pokePLayer[o].HP) + " HP")
+			return
+
 		}
 	}
-	fmt.Println("Ypu used a Health Potion on %s, it now has %d HP", pokePLayer[i].Name, pokePLayer[i].HP)
 
 	data.WriteJSONFile(fileName, pokePLayer)
 	return
